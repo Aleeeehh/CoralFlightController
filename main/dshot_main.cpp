@@ -14,8 +14,12 @@ extern "C" void app_main()
 
     // Inizializza ESC su di un GPIO con protocollo DSHOT600
     DShotRMT M1(GPIO_NUM_18, DSHOT600); //M1
+    DShotRMT M2(GPIO_NUM_14, DSHOT600); //M2
+    DShotRMT M3(GPIO_NUM_19, DSHOT600); //M3
     DShotRMT M4(GPIO_NUM_27, DSHOT600); //M4
     M1.begin();
+    M2.begin();
+    M3.begin();
     M4.begin();
     printf("[INFO] ESC inizializzato con DShot600 su GPIO 18 (motore M1)\n");
 
@@ -33,7 +37,10 @@ extern "C" void app_main()
         for (int i = 0; i < 40000; i++)
         {
             M1.setThrottle(0);
+            M2.setThrottle(0);
+            M3.setThrottle(0);
             M4.setThrottle(0);
+
             if (i % 500 == 0)
             {
                 printf("[DEBUG] arming... %d ms\n", i * 2);
@@ -46,8 +53,10 @@ extern "C" void app_main()
         for (int throttle = 100; throttle <= 1100; throttle += 20) 
         {
             M1.setThrottle(throttle);
+            M2.setThrottle(throttle);
+            M3.setThrottle(throttle);
             M4.setThrottle(throttle);
-           
+            
             //1 secondo per velocità
             for (int second = 1; second <= 1; second++)
             {
@@ -60,6 +69,8 @@ extern "C" void app_main()
         for (int throttle = 1100; throttle >= 100; throttle -= 20) 
         {   
             M1.setThrottle(throttle);
+            M2.setThrottle(throttle);
+            M3.setThrottle(throttle);
             M4.setThrottle(throttle);
             
             //1 secondo per velocità
@@ -72,6 +83,8 @@ extern "C" void app_main()
 
         printf("[INFO] Fine ciclo completo. Pausa lunga 5 secondi...\n");
         M1.setThrottle(0);
+        M2.setThrottle(0);
+        M3.setThrottle(0);
         M4.setThrottle(0);
         vTaskDelay(pdMS_TO_TICKS(5000)); // 5 secondi di pausa tra i cicli
     }
