@@ -44,3 +44,6 @@ build/
 
 # Logs
 *.log
+
+# Cursor cache
+.cache/
