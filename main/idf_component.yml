@@ -1,0 +1,11 @@
+## IDF Component Manager Manifest File
+dependencies:
+  idf:
+    version: '>=4.1.0'
+  espp/base_component: '*'
+  espp/cli: '*'
+  espp/format: '*'
+  espp/logger: '*'
+  espp/task: '*'
+  espp/i2c: '*'
+  espressif/mpu6050: '*'

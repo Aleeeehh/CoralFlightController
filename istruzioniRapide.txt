@@ -1,0 +1,30 @@
+COMANDI CLI ESP-IDF GENERICI
+- "idf.py menuconfig" //menu di configurazione
+- "idf.py fullclean" //pulizia della build e dei managed_components
+- "idf.py build" //compila e basta
+- "idf.py -p /dev/tty.usbserial-0001 flash" compila e uploda
+- "idf.py -p /dev/tty.usbserial-0001 monitor" (monitor seriale) ("control + ]" per uscire )
+- "ls /dev/tty.*" per vedere le porte attive
+
+PER AGGIORNARE LE DIPENDENZE
+- "idf.py fullclean" //pulizia della build e dei managed_components
+- "idf.py reconfigure" //installa tutte le librerie specificate in idf_component.yml
+- "idf.py clean" //Rimuove i file di build precedenti
+- "idf.py build" //Ricompila tutto con le nuove dipendenze
+
+PER INVIARE COMANDI REMOTI:
+- Accendi l'hotspot dell'iPhone
+- Alimenta Coral (vedrai sul tel che un dispositivo si sarà connesso)
+- Connetti anche il pc all'hotspot
+- Connettiti all'ip: http://172.20.10.2
+
+COMMIT DELLA LIBRERIA "derdoktor667/DShotRMT" CHE FUNZIONA CORRETTAMENTE
+Commits on Jun 19, 2025
+...rmt class objects
+
+GPIO ESP32
+- 35 per led integrato nella scheda
+
+NOTE DI BASE
+- in esp-idf, il codice che scrivi sta in /main
+- Ricorda di killare il terminale del seriale prima di fare upload nuovo firmware
